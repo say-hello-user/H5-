@@ -18,8 +18,7 @@ lastModified : 文件最后修改的时间。
 ```javascript
 <input type="file" id="files" multiple>
 <script>
-    var elem = document.getElementById('files');
-    elem.onchange = function (event) {
+    var elem = document.getElementById('files');    elem.onchange = function (event) {
     	var files = event.target.files;
     	for (var i = 0; i < files.length; i++) {
     	    // 文件类型为 image 并且文件大小小于 200kb
@@ -32,7 +31,7 @@ lastModified : 文件最后修改的时间。
 ```
 
 input 中有个 accept 属性，可以用来规定能够通过文件上传进行提交的文件类型。
-a
+
 accept="image/*" 
 可以用来限制只允许上传图像格式。但是在 Webkit 浏览器下却出现了响应滞慢的问题，要等上好几秒才弹出文件选择框。
 
@@ -56,7 +55,7 @@ var blob = new Blob(['hello'], {type:"text/plain"});
 
 Blob 构造函数中的第一个参数是一个数组，可以存放 ArrayBuffer对象、ArrayBufferView 对象、Blob对象和字符串。
 
-aBlob 对象可以通过 slice() 方法来返回一个新的 Blob 对象。
+Blob 对象可以通过 slice() 方法来返回一个新的 Blob 对象。
 ```javascript
 var newblob = blob.slice(0,5, {type:"text/plain"});
 ````
@@ -151,7 +150,7 @@ console.log(c);     // https://lin-xin.github.io
 btoa 方法对字符串 a 进行编码，不会改变 a 的值，返回一个编码后的值。
 atob 方法对编码后的字符串进行解码。
 但是参数中带中文，已经超出了8位ASCII编码的字符范围，浏览器就会报错。所以需要先对中文进行 encodeURIComponent 编码处理。
-```
+```javascript
 var a = "哈喽 世界";
 var b = btoa(encodeURIComponent(a));
 var c = decodeURIComponent(atob(b));
